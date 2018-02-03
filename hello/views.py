@@ -23,7 +23,6 @@ def db(request):
 def x(request):
     if request.method=='POST':
         title= request.POST['title']
-        person2 =request.POST['person2']
         subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
@@ -38,7 +37,7 @@ def x(request):
             return response.read ()
         result = get_suggestions ()
         context= {
-            'name':person2
+            'name':result
         }
         return render(request, 'x.html', context)
     else:
