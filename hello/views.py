@@ -4,6 +4,7 @@ import http.client, urllib.parse
 
 from .models import Greeting
 
+l=[]
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
@@ -23,6 +24,7 @@ def db(request):
 def x(request):
     if request.method=='POST':
         title= request.POST['title']
+        box2= request.POST.get('box2', True)
         subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
@@ -36,8 +38,9 @@ def x(request):
             response = conn.getresponse ()
             return response.read ()
         result = get_suggestions ()
+        l.append(result)
         context= {
-            'name':result
+            'name':l
         }
         return render(request, 'x.html', context)
     else:
