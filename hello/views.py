@@ -23,16 +23,11 @@ def db(request):
 def x(request):
     if request.method=='POST':
         title= request.POST['title']
-        context= {
-            'name':title
-        }
-        return render(request, 'x.html', context)
-    else:
         subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
         target = 'fr-fr'
-        text = 'Hello'
+        text = title
         params = '?to=' + target + '&text=' + urllib.parse.quote (text)
         def get_suggestions():
             headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
@@ -41,6 +36,11 @@ def x(request):
             response = conn.getresponse ()
             return response.read ()
         result = get_suggestions ()
+        context= {
+            'name':results
+        }
+        return render(request, 'x.html', context)
+    else:
         context= {
             'name':result
         }
