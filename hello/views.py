@@ -4,7 +4,9 @@ import http.client, urllib.parse
 
 from .models import Greeting
 
-s1=""
+class Aman:
+    s1=""
+
 
 # Create your views here.
 def index(request):
@@ -38,7 +40,7 @@ def x(request):
             response = conn.getresponse ()
             return response.read ()
         result = get_suggestions ()
-        s1+=result
+        Aman.s1+=result
         context= {
             'name':s1
         }
