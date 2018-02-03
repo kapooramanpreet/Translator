@@ -22,7 +22,7 @@ def db(request):
 
 def x(request):
     if request.method=='POST':
-        title= request.POST['title']
+        title+= request.POST['title']
         subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
