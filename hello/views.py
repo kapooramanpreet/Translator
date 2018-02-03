@@ -23,7 +23,7 @@ def db(request):
 def x(request):
     if request.method=='POST':
         title= request.POST['title']
-        title2= request.POST['title2']
+        title2= request.POST.get('title2',False)
         if len(title)==0 and len(title2)==0:
             return render(request, 'x.html')
         if len(title)>0:
