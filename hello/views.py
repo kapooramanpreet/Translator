@@ -22,8 +22,9 @@ def db(request):
 
 def x(request):
     if request.method=='POST':
+        title= request.POST['title']
         context= {
-            'name':'nice'
+            'name':title
         }
         return render(request, 'x.html', context)
     else:
