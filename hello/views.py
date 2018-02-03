@@ -42,7 +42,7 @@ def x(request):
         return render(request, 'x.html', context)
     else:
         context= {
-            'name':result
+            'name':'ok'
         }
         #print (result.decode("utf-8"))
         return render(request, 'x.html', context)
