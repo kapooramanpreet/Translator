@@ -23,7 +23,7 @@ def db(request):
 def x(request):
     if request.method=='POST':
         context= {
-            'name':'nice
+            'name':'nice'
         }
         return render(request, 'x.html', context)
     else:
