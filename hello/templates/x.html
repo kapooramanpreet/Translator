@@ -8,24 +8,24 @@
 
   <body>
     <form action="{% url 'x' %}" method="post">
-    {% csrf_token %}
+      {% csrf_token %}
       <p id="x1"> Hello </p>
       <br>
       <br>
       <input type="text" name="title" id="title"/>
       <input type="submit" value="Send"/>
-    </form>
 
-    <br>
-    <br>
-    <br>
-    <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
-    <p id="x"> hi {{name}}</p>
-    <br>
-    <br>
-    <input type="text"/>
-    <input type="button" value="Send"/>
+      <textarea id="person2" rows="10" cols="10"> hi {{name}}</p>
+      <br>
+      <br>
+      <input type="text"/>
+      <input type="button" value="Send"/>
+  </form>
   </body>
 
 </html>
