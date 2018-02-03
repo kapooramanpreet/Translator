@@ -8,6 +8,7 @@
 
   <body>
     <form action="{% url 'x' %}" method="post">
+    {% csrf_token %}
       <p id="x1"> Hello </p>
       <br>
       <br>
