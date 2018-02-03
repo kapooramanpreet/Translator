@@ -22,7 +22,10 @@ def db(request):
 
 def x(request):
     if request.method=='POST':
-        return
+        context= {
+            'name':'nice
+        }
+        return render(request, 'x.html', context)
     else:
         subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
         host = 'api.microsofttranslator.com'

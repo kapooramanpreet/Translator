@@ -7,18 +7,20 @@
   </head>
 
   <body>
-    <p id="x"> Hello from {{name}} </p>
-    <br>
-    <br>
-    <input type="text"/>
-    <input type="button" value="Send"/>
+    <form action="{% url 'x' %}" method="post">
+      <p id="x1"> Hello </p>
+      <br>
+      <br>
+      <input type="text" name="title" id="title"/>
+      <input type="submit" value="Send"/>
+    </form>
 
     <br>
     <br>
     <br>
     <br>
 
-    <p id="x"> hi</p>
+    <p id="x"> hi {{name}}</p>
     <br>
     <br>
     <input type="text"/>
