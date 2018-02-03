@@ -34,5 +34,8 @@ def x(request):
         response = conn.getresponse ()
         return response.read ()
     result = get_suggestions ()
+    context= {
+        'name':result
+    }
     #print (result.decode("utf-8"))
-    return HttpResponse(result)
+    return render(request, 'x.html', context)
