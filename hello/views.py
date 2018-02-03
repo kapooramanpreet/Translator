@@ -35,4 +35,4 @@ def x(request):
         return response.read ()
     result = get_suggestions ()
     #print (result.decode("utf-8"))
-    return HttpResponse('Hello from Python!')
+    return HttpResponse(result)
