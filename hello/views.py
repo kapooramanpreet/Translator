@@ -37,7 +37,7 @@ def x(request):
             return response.read ()
         result = get_suggestions ()
         context= {
-            'name':results
+            'name':result
         }
         return render(request, 'x.html', context)
     else:
