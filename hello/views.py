@@ -19,14 +19,10 @@ def db(request):
     greetings = Greeting.objects.all()
     return render(request, 'db.html', {'greetings': greetings})
 
-
-def x(request):
+def x1(request):
     if request.method=='POST':
-        title= request.POST['title']
-        title2= request.POST['title2']
-        if len(title)==0 and len(title2)==0:
-            return render(request, 'x.html')
-        if len(title)>0:
+        title= request.POST.get('title',False)
+        if title!=False:
             l1.append(title)
             subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
             host = 'api.microsofttranslator.com'
@@ -59,8 +55,14 @@ def x(request):
                 'text1':cc,
                 'text2':qq
             }
-            return render(request, 'x.html', context)
-        else:
+            return render(request, 'x1.html', context)
+    return render(request, 'x1.html')
+
+
+def x2(request):
+    if request.method=='POST':
+        title2= request.POST.get('title2',False)
+        if title2!=False:
             l2.append(title2)
             subscriptionKey = '0c659fa4493f47c6b72473447b41fd4d'
             host = 'api.microsofttranslator.com'
@@ -93,11 +95,14 @@ def x(request):
                 'text1':cc,
                 'text2':qq
             }
-            return render(request, 'x.html', context)
-    else:
-        context= {
-            'text1':'',
-            'text2':''
-        }
-        #print (result.decode("utf-8"))
-        return render(request, 'x.html', context)
+            return render(request, 'x2.html', context)
+    return render(request, 'x2.html')
+
+def x(request):
+    l1.clear()
+    l2.clear()
+    context= {
+        'text1':'',
+        'text2':''
+    }
+    return render(request, 'x.html', context)

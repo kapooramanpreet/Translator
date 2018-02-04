@@ -15,14 +15,14 @@
     </form>
 
     <br>
-
+    
     <form action="{% url 'x1' %}" method="post">
       {% csrf_token %}
 
       <textarea rows="10" cols="60" >{{text1}}</textarea>
       <br>
       <br>
-      <input type="text" name="title" id="title"/>
+      <input type="text" name="title" />
       <input type="submit" value="Send"/>
     </form>
 
@@ -36,7 +36,7 @@
       <textarea rows="10" cols="60" >{{text2}}</textarea>
       <br>
       <br>
-      <input type="text" name="title2" id="title2"/>
+      <input type="text" name="title4" />
       <input type="submit" value="Send"/>
     </form>
   </body>
