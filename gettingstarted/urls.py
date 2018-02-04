@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^x1', hello.views.x1, name='x1'),
     url(r'^x2', hello.views.x2, name='x2'),
     url(r'^x', hello.views.x, name='x'),
+    url(r'^error', hello.views.error, name='error'),
     path('admin/', admin.site.urls),
 ]
