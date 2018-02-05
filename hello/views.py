@@ -5,6 +5,12 @@ import unicodedata
 
 from .models import Greeting
 
+langdict={"af":"Afrikaans", "ar": "Arabic", "bn": "Bangla", "bg":"Bulgarian",
+    "yue":"Cantonese","ca": "Catalan" ,"zh-Hans": "Chinese Simplified", "zh-Hant": "Chinese Traditional",
+     "da":"Danish","nl":"Dutch","en":"English","fil":"Filipino","fr":"French","de":"German","el":"Greek","he":"Hebrew","hi":"Hindi","it":"Italian","ja":"Japanese","ko":"Korean",
+     "ms":"Malay","fa":"Persian","ru":"Russian","es":"Spanish","ta":"Tamil","tr":"Turkish",
+     "ur":"Urdu","vi":"Vietnamese"}
+
 l1=[]
 l2=[]
 error_count=0
@@ -16,14 +22,8 @@ def index(request):
     return render(request, 'index.html')
 
 
-def db(request):
-    greeting = Greeting()
-    greeting.save()
-    greetings = Greeting.objects.all()
-    return render(request, 'db.html', {'greetings': greetings})
-
 def error(request):
-    global error_count,lang1, lang2
+    global error_count,lang1, lang2, langdict
     error_count=error_count+1
     qq=""
     for i in l2:
@@ -34,14 +34,14 @@ def error(request):
     context= {
         'text1':cc,
         'text2':qq,
-        'lan1':lang1,
-        'lan2':lang2,
+        'lan1':langdict[lang1],
+        'lan2':langdict[lang2],
         'errorc':str(error_count)
     }
     return render(request, 'error.html', context)
 
 def x1(request):
-    global lang1, lang2
+    global lang1, lang2, langdict
     if request.method=='POST':
         title= request.POST.get('title',False)
         if title!=False:
@@ -76,15 +76,15 @@ def x1(request):
             context= {
                 'text1':cc,
                 'text2':qq,
-                'lan1':lang1,
-                'lan2':lang2
+                'lan1':langdict[lang1],
+                'lan2':langdict[lang2],
             }
             return render(request, 'x1.html', context)
     return render(request, 'x1.html')
 
 
 def x2(request):
-    global lang1, lang2
+    global lang1, lang2, langdict
     if request.method=='POST':
         title2= request.POST.get('title2',False)
         if title2!=False:
@@ -119,8 +119,8 @@ def x2(request):
             context= {
                 'text1':cc,
                 'text2':qq,
-                'lan1':lang1,
-                'lan2':lang2
+                'lan1':langdict[lang1],
+                'lan2':langdict[lang2],
             }
             return render(request, 'x2.html', context)
     return render(request, 'x2.html')
@@ -128,14 +128,14 @@ def x2(request):
 def x(request):
     l1.clear()
     l2.clear()
-    global error_count, lang1, lang2
+    global error_count, lang1, lang2,langdict
     error_count=0
     nn=""
     context= {
         'text1':'',
         'text2':'',
-        'lan1':lang1,
-        'lan2':lang2
+        'lan1':langdict[lang1],
+        'lan2':langdict[lang2],
     }
 
     if request.method=="POST":
@@ -150,8 +150,8 @@ def x(request):
         context= {
         'text1':'',
         'text2':'',
-        'lan1':lang1,
-        'lan2':lang2
+        'lan1':langdict[lang1],
+        'lan2':langdict[lang2],
         }
 
 

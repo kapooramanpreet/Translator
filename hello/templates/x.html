@@ -7,11 +7,11 @@
 <div class="jumbotron text-center">
   <div class="container">
 
-<div class="panel panel-default" style="width:48%; float:left; margin-top:5%">
+<div class="panel panel-default" style="width:49%; float:left; margin-top:5%">
   <div class="panel-heading" >
    <form action="{% url 'x' %}" method="post">
      {% csrf_token %}
-      <h4><b>Current Language:</b> {{lan2}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-or-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <h4><b>Current Language:</b> {{lan2}} &nbsp;&nbsp;-or-&nbsp;&nbsp;
      <select name="lang11" id="lang11" onchange="this.form.submit()" class="selectpicker" data-style="btn-default">
        <option value="en">Select New Language</option>
        <option value="af"> Afrikaans</option>
@@ -21,7 +21,7 @@
        <option value="yue"> Cantonese </option>
        <option value="ca"> Catalan </option>
        <option value="zh-Hans"> Chinese Simplified </option>
-       <option value="zh-Hant "> Chinese Traditional </option>
+       <option value="zh-Hant"> Chinese Traditional </option>
        <option value="da"> Danish </option>
        <option value="nl"> Dutch </option>
        <option value="en"> English </option>
@@ -49,7 +49,7 @@
   <div class="panel-body">
     <form action="{% url 'x1' %}" method="post" >
       {% csrf_token %}
-      <textarea rows="10" cols="60" class="form-control">{{text1}}</textarea>
+      <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text1}}</textarea>
       <br>
       <br>
       <input type="text" name="title" id="title" class="form-control"/>
@@ -61,11 +61,11 @@
   </div>
 </div>
 
-<div class="panel panel-default" style="width:48%; float:right; margin-top:5%">
+<div class="panel panel-default" style="width:49%; float:right; margin-top:5%">
   <div class="panel-heading" >
     <form action="{% url 'x' %}" method="post">
       {% csrf_token %}
-       <h4><b>Current Language:</b> {{lan1}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-or-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <h4><b>Current Language:</b> {{lan1}} &nbsp;-or-&nbsp;&nbsp;
       <select name="lang22" onchange="this.form.submit()" class="selectpicker" data-style="btn-default">
         <option value="en">Select New Language</option>
         <option value="af"> Afrikaans</option>
@@ -103,12 +103,12 @@
  <div class="panel-body">
    <form action="{% url 'x2' %}" method="post" >
      {% csrf_token %}
-     <textarea rows="10" cols="60" class="form-control">{{text2}}</textarea>
+     <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text2}}</textarea>
      <br>
      <br>
      <input type="text" name="title2" id="title2" class="form-control"/>
      <br>
-     <button type="submit" class="btn btn-primary " style="float:right">
+     <button type="submit" class="btn btn-primary" style="float:right">
        <span class="glyphicon glyphicon-send" >&nbsp;Send</span>
      </button>
      </form>
@@ -120,9 +120,9 @@
 <br>
 <div style="text-align:center">
   <span style="display:inline-block">
-    <button class="btn btn-success">
-      <span class="glyphicon glyphicon-star"><b>&nbsp;Interaction</b></span>
-    </button>
+    <a href="http://www.google.com" target="_blank" class="btn btn-success">
+      <span class="glyphicon glyphicon-star"><b>&nbsp;Interaction</b></span></a>
+    </a>
   </span>
   <span style="display:inline-block">
   <form action="{% url 'x' %}" method="post" >

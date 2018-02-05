@@ -1,64 +1,68 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load staticfiles %}
 
-  <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <meta charset="utf-8">
-  </head>
 
-  <body>
+{% block content %}
 
-    <form action="{% url 'x' %}" method="post">
-          {% csrf_token %}
-          <input type="submit" value="Home"/>
-    </form>
+<div class="jumbotron text-center">
+  <div class="container">
 
-    <form action="{% url 'x' %}" method="post">
+<div class="panel panel-default" style="width:49%; float:left; margin-top:5%">
+  <div class="panel-heading" >
+      <h4><b>Current Language:</b> {{lan2}}</h4>
+  </div>
+  <div class="panel-body">
+    <form action="{% url 'x1' %}" method="post" >
       {% csrf_token %}
-      <input type="submit" value="Clear"/>
-    </form>
-
-    <form action="{% url 'error' %}" method="post">
-      {% csrf_token %}
-      <input type="submit" value="Error"/>
-    </form>
-
-    <br>
-
-    <br>
-         Current selected language: {{lan2}}
-    <br>
-    <br>
-    Current selected language: {{lan1}}
-    <br>
-
-
-
-
-    <form action="{% url 'x1' %}" method="post">
-      {% csrf_token %}
-
-      <textarea rows="10" cols="60" >{{text1}}</textarea>
+      <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text1}}</textarea>
       <br>
       <br>
-      <input type="text" name="title" />
-      <input type="submit" value="Send"/>
-    </form>
+      <input type="text" name="title" id="title" class="form-control"/>
+      <br>
+      <button type="submit" class="btn btn-primary " style="float:right">
+        <span class="glyphicon glyphicon-send" >&nbsp;Send</span>
+      </button>
+      </form>
+  </div>
+</div>
 
-      <br>
-      <br>
-      <br>
-      <br>
+<div class="panel panel-default" style="width:49%; float:right; margin-top:5%">
+  <div class="panel-heading" >
+     <h4><b>Current Language:</b> {{lan1}} </h4>
+  </form>
+ </div>
+ <div class="panel-body">
+   <form action="{% url 'x2' %}" method="post" >
+     {% csrf_token %}
+     <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text2}}</textarea>
+     <br>
+     <br>
+     <input type="text" name="title2" id="title2" class="form-control"/>
+     <br>
+     <button type="submit" class="btn btn-primary" style="float:right">
+       <span class="glyphicon glyphicon-send" >&nbsp;Send</span>
+     </button>
+     </form>
+ </div>
+</div>
 
-    <form action="{% url 'x2' %}" method="post">
-      {% csrf_token %}
-      <textarea rows="10" cols="60" >{{text2}}</textarea>
-      <br>
-      <br>
-      <input type="text" name="title2" />
-      <input type="submit" value="Send"/>
-    </form>
-  </body>
+  </div>
+  </div>
+<br>
+<div style="text-align:center">
+  <span style="display:inline-block">
+    <a href="http://www.google.com" target="_blank" class="btn btn-success">
+      <span class="glyphicon glyphicon-star"><b>&nbsp;Interaction</b></span></a>
+    </a>
+  </span>
+  <span style="display:inline-block">
+  <form action="{% url 'x' %}" method="post" >
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger ">
+      <span class="glyphicon glyphicon-trash">&nbsp;<b>Clear-Chat</b></span>
+    </button>
+  </form>
+</span>
+</div>
 
-</html>
+    {% endblock %}
