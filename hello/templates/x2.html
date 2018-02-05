@@ -10,6 +10,11 @@
   <body>
 
     <form action="{% url 'x' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Home"/>
+    </form>
+
+    <form action="{% url 'x' %}" method="post">
       {% csrf_token %}
       <input type="submit" value="Clear"/>
     </form>
@@ -18,8 +23,15 @@
       {% csrf_token %}
       <input type="submit" value="Error"/>
     </form>
-    
+
     <br>
+    <br>
+    Current selected language: {{lan2}}
+    <br>
+    <br>
+    Current selected language: {{lan1}}
+    <br>
+
 
     <form action="{% url 'x1' %}" method="post">
       {% csrf_token %}

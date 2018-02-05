@@ -8,7 +8,8 @@ from .models import Greeting
 l1=[]
 l2=[]
 error_count=0
-
+lang1="hi"
+lang2="en"
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
@@ -22,7 +23,7 @@ def db(request):
     return render(request, 'db.html', {'greetings': greetings})
 
 def error(request):
-    global error_count
+    global error_count,lang1, lang2
     error_count=error_count+1
     qq=""
     for i in l2:
@@ -33,11 +34,14 @@ def error(request):
     context= {
         'text1':cc,
         'text2':qq,
+        'lan1':lang1,
+        'lan2':lang2,
         'errorc':str(error_count)
     }
     return render(request, 'error.html', context)
 
 def x1(request):
+    global lang1, lang2
     if request.method=='POST':
         title= request.POST.get('title',False)
         if title!=False:
@@ -46,7 +50,7 @@ def x1(request):
             host = 'api.microsofttranslator.com'
             path = '/V2/Http.svc/Translate'
             #Hindi
-            target = 'hi'
+            target = lang1
             text = title
             params = '?to=' + target + '&text=' + urllib.parse.quote (text)
             def get_suggestions():
@@ -71,13 +75,16 @@ def x1(request):
                 cc+=i+"\n"
             context= {
                 'text1':cc,
-                'text2':qq
+                'text2':qq,
+                'lan1':lang1,
+                'lan2':lang2
             }
             return render(request, 'x1.html', context)
     return render(request, 'x1.html')
 
 
 def x2(request):
+    global lang1, lang2
     if request.method=='POST':
         title2= request.POST.get('title2',False)
         if title2!=False:
@@ -86,7 +93,7 @@ def x2(request):
             host = 'api.microsofttranslator.com'
             path = '/V2/Http.svc/Translate'
             #Hindi
-            target = 'en'
+            target = lang2
             text = title2
             params = '?to=' + target + '&text=' + urllib.parse.quote (text)
             def get_suggestions():
@@ -111,7 +118,9 @@ def x2(request):
                 cc+=i+"\n"
             context= {
                 'text1':cc,
-                'text2':qq
+                'text2':qq,
+                'lan1':lang1,
+                'lan2':lang2
             }
             return render(request, 'x2.html', context)
     return render(request, 'x2.html')
@@ -119,10 +128,31 @@ def x2(request):
 def x(request):
     l1.clear()
     l2.clear()
-    global error_count
+    global error_count, lang1, lang2
     error_count=0
+    nn=""
     context= {
         'text1':'',
-        'text2':''
+        'text2':'',
+        'lan1':lang1,
+        'lan2':lang2
     }
+
+    if request.method=="POST":
+        nn= request.POST.get('lang11',False)
+        nn=str(nn)
+        if nn!="False":
+            lang2=nn
+        nn= request.POST.get('lang22',False)
+        nn=str(nn)
+        if nn!="False":
+            lang1=nn
+        context= {
+        'text1':'',
+        'text2':'',
+        'lan1':lang1,
+        'lan2':lang2
+        }
+
+
     return render(request, 'x.html', context)

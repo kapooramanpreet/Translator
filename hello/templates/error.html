@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
 
   <head>
     {% load static %}
@@ -7,7 +11,11 @@
     <meta charset="utf-8">
   </head>
 
-  <body>
+
+    <form action="{% url 'x' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Home"/>
+    </form>
 
     <form action="{% url 'x' %}" method="post">
       {% csrf_token %}
@@ -20,6 +28,13 @@
       Total errors= {{errorc}}
     </form>
 
+    <br>
+
+    <br>
+         Current selected language: {{lan2}}
+    <br>
+    <br>
+    Current selected language: {{lan1}}
     <br>
 
     <form action="{% url 'x1' %}" method="post">
@@ -45,6 +60,6 @@
       <input type="text" name="title4" />
       <input type="submit" value="Send"/>
     </form>
-  </body>
 
-</html>
+
+    {% endblock %}
