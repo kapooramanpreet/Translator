@@ -21,11 +21,14 @@
       <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text1}}</textarea>
       <br>
       <br>
-      <input type="text" name="title" id="title" class="form-control"/>
+      <input type="text" name="title" id="title" class="form-control" required/>
       <br>
-      <button type="submit" class="btn btn-primary " style="float:right">
+      <span style="float:right">
+      <button type="submit" class="btn btn-primary " >
         <span class="glyphicon glyphicon-send" >&nbsp;Send</span>
       </button>
+      <a href="/error" class="btn btn-danger "><span class="glyphicon glyphicon-alert"></span> <span class="badge">{{errorc}}</span> </a>
+    </span>
       </form>
   </div>
 </div>
@@ -43,11 +46,14 @@
      <textarea rows="10" cols="60" class="form-control" readonly style="background-color:#FFF !important;">{{text2}}</textarea>
      <br>
      <br>
-     <input type="text" name="title2" id="title2" class="form-control"/>
+     <input type="text" name="title2" id="title2" class="form-control" required/>
      <br>
-     <button type="submit" class="btn btn-primary" style="float:right">
+     <span style="float:right">
+     <button type="submit" class="btn btn-primary " >
        <span class="glyphicon glyphicon-send" >&nbsp;Send</span>
      </button>
+     <a href="/error" class="btn btn-danger "><span class="glyphicon glyphicon-alert"></span> <span class="badge">{{errorc}}</span> </a>
+   </span>
      </form>
  </div>
 </div>
